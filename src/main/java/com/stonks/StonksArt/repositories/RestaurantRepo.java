@@ -1,8 +1,12 @@
 package com.stonks.StonksArt.repositories;
 
+import com.stonks.StonksArt.entities.Restaurant;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class RestaurantRepo {
+public interface RestaurantRepo extends JpaRepository<Restaurant,Integer> {
+
+
 }
