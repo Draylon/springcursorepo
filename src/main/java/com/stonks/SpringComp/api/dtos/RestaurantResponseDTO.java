@@ -1,10 +1,22 @@
-package com.stonks.StonksArt.api.dtos;
+package com.stonks.SpringComp.api.dtos;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotEmpty;
 
 public class RestaurantResponseDTO {
 
+    @NotEmpty
+    @ApiModelProperty(value = "${restaurant.create.id}")
     private Integer id;
+    @NotEmpty
+    @ApiModelProperty(value = "${restaurant.create.name}")
     private String name;
+    @NotEmpty
+    @ApiModelProperty(value = "${restaurant.create.email}")
     private String email;
+    @NotEmpty
+    @ApiModelProperty(value = "${restaurant.create.phone}")
     private String phone;
 
     public Integer getId() {

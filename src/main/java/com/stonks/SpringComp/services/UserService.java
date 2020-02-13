@@ -1,17 +1,13 @@
-package com.stonks.StonksArt.services;
+package com.stonks.SpringComp.services;
 
-import com.stonks.StonksArt.api.dtos.CreateUserDTO;
-import com.stonks.StonksArt.api.dtos.RestaurantResponseDTO;
-import com.stonks.StonksArt.api.dtos.UserResponseDTO;
-import com.stonks.StonksArt.api.mappers.UserMapper;
-import com.stonks.StonksArt.entities.Restaurant;
-import com.stonks.StonksArt.entities.User;
-import com.stonks.StonksArt.exceptions.AlreadyExistsException;
-import com.stonks.StonksArt.exceptions.NotFoundException;
-import com.stonks.StonksArt.repositories.UserRepo;
+import com.stonks.SpringComp.api.dtos.CreateUserDTO;
+import com.stonks.SpringComp.api.dtos.UserResponseDTO;
+import com.stonks.SpringComp.api.mappers.UserMapper;
+import com.stonks.SpringComp.entities.User;
+import com.stonks.SpringComp.exceptions.AlreadyExistsException;
+import com.stonks.SpringComp.exceptions.NotFoundException;
+import com.stonks.SpringComp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.stonks.StonksArt.entities;
+package com.stonks.SpringComp.entities;
 
 import javax.persistence.*;
 

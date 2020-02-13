@@ -1,4 +1,4 @@
-package com.stonks.StonksArt.exceptions;
+package com.stonks.SpringComp.exceptions;
 
 public class AlreadyExistsException extends RuntimeException {
     public AlreadyExistsException(String message){

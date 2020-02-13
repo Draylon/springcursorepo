@@ -1,4 +1,4 @@
-package com.stonks.StonksArt.api.dtos;
+package com.stonks.SpringComp.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -7,16 +7,16 @@ import javax.validation.constraints.NotEmpty;
 public class CreateRestaurantDTO {
 
     @NotEmpty
-    @ApiModelProperty(value = "Nome")
+    @ApiModelProperty(value = "${restaurant.create.name}")
     private String name;
     @NotEmpty
-    @ApiModelProperty(value = "Email")
+    @ApiModelProperty(value = "${restaurant.create.email}")
     private String email;
     @NotEmpty
-    @ApiModelProperty(value = "CNPJ")
+    @ApiModelProperty(value = "${restaurant.create.cnpj}")
     private String cnpj;
     @NotEmpty
-    @ApiModelProperty(value = "Telefone")
+    @ApiModelProperty(value = "${restaurant.create.phone}")
     private String phone;
 
     public String getName() {

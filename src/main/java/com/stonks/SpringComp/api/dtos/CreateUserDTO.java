@@ -1,4 +1,4 @@
-package com.stonks.StonksArt.api.dtos;
+package com.stonks.SpringComp.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
 

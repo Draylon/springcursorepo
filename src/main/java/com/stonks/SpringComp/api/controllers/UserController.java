@@ -1,9 +1,8 @@
-package com.stonks.StonksArt.api.controllers;
+package com.stonks.SpringComp.api.controllers;
 
-import com.stonks.StonksArt.api.dtos.CreateUserDTO;
-import com.stonks.StonksArt.api.dtos.UserResponseDTO;
-import com.stonks.StonksArt.api.mappers.UserMapper;
-import com.stonks.StonksArt.services.UserService;
+import com.stonks.SpringComp.api.dtos.CreateUserDTO;
+import com.stonks.SpringComp.api.dtos.UserResponseDTO;
+import com.stonks.SpringComp.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping( value = "/get")
-    public UserResponseDTO get(@RequestBody @Param("id") Integer id){
+    public UserResponseDTO get(@RequestParam @Param("id") Integer id){
         return userService.getById(id);
     }
 
