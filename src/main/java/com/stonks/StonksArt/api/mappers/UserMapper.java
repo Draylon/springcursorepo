@@ -5,6 +5,9 @@ import com.stonks.StonksArt.api.dtos.UserResponseDTO;
 import com.stonks.StonksArt.entities.User;
 import org.modelmapper.ModelMapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserMapper {
     private static final ModelMapper modelMapper = new ModelMapper();
 
@@ -15,6 +18,4 @@ public class UserMapper {
     public static UserResponseDTO toResponseDTO(User user){
         return modelMapper.map(user,UserResponseDTO.class);
     }
-
-
 }

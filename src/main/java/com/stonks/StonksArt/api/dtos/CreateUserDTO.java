@@ -2,28 +2,27 @@ package com.stonks.StonksArt.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 
 public class CreateUserDTO {
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.name}$") // Ler meta-inf
+    @ApiModelProperty(value = "${user.create.name}") // Ler meta-inf
     private String name;
 
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.phone}$")
+    @ApiModelProperty(value = "${user.create.phone}")
     private String phone;
 
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.email}$")
+    @ApiModelProperty(value = "${user.create.email}")
     private String email;
 
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.pword}$")
+    @ApiModelProperty(value = "${user.create.pword}")
     private String pword;
 
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.address}$")
+    @ApiModelProperty(value = "${user.create.address}")
     private String address;
 
     public String getName() {

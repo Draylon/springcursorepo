@@ -1,7 +1,5 @@
 package com.stonks.StonksArt.entities;
 
-import io.swagger.models.auth.In;
-
 import javax.persistence.*;
 
 @Entity

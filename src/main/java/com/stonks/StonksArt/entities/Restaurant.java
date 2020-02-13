@@ -5,10 +5,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "RESTAURANTE")
 public class Restaurant {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "NOME", nullable = false)
+    private String name;
+    @Column(name = "CNPJ", nullable = false)
+    private String cnpj;
+    @Column(name = "TELEFONE",nullable = false)
+    private String telefone;
+    @Column(name = "EMAIL",nullable = false)
+    private String email;
 
     public Integer getId() {
         return id;
@@ -54,13 +61,4 @@ public class Restaurant {
         this.email = email;
         return this;
     }
-
-    @Column(name = "NOME", nullable = false)
-    private String name;
-    @Column(name = "CNPJ", nullable = false)
-    private String cnpj;
-    @Column(name = "TELEFONE",nullable = false)
-    private String telefone;
-    @Column(name = "EMAIL",nullable = false)
-    private String email;
 }

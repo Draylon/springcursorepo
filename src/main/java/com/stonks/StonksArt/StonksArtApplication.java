@@ -9,7 +9,6 @@ public class StonksArtApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(StonksArtApplication.class, args);
-		System.out.println("STONKS___________-");
 	}
 
 }
