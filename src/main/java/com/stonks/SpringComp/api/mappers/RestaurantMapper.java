@@ -14,6 +14,10 @@ public class RestaurantMapper {
         return modelMapper.map(createRestaurantDTO,Restaurant.class);
     }
 
+    public static Restaurant toEntity(RestaurantResponseDTO restaurantResponseDTO){
+        return modelMapper.map(restaurantResponseDTO,Restaurant.class);
+    }
+
     public static RestaurantResponseDTO toResponseDTO(Restaurant restaurant){
         return modelMapper.map(restaurant,RestaurantResponseDTO.class);
     }

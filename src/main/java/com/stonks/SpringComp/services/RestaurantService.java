@@ -4,6 +4,7 @@ import com.stonks.SpringComp.api.dtos.CreateRestaurantDTO;
 import com.stonks.SpringComp.api.dtos.RestaurantResponseDTO;
 import com.stonks.SpringComp.api.mappers.RestaurantMapper;
 import com.stonks.SpringComp.entities.Restaurant;
+import com.stonks.SpringComp.exceptions.NotFoundException;
 import com.stonks.SpringComp.repositories.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,14 +26,19 @@ public class RestaurantService {
     }
 
     public RestaurantResponseDTO getById(Integer id){
-        Optional<Restaurant> optional = restaurantRepo.findById(id);
-        if(optional.isPresent()) {
-            Restaurant restaurant = optional.get();
-            return new RestaurantResponseDTO()
+
+        Restaurant restaurant = findById(id);
+
+        return new RestaurantResponseDTO()
                     .setEmail(restaurant.getEmail())
                     .setName(restaurant.getName())
                     .setPhone(restaurant.getTelefone());
-        }
-        return null;
+    }
+
+    public Restaurant findById(Integer id){
+        Optional<Restaurant> optionalRestaurant = restaurantRepo.findById(id);
+        if(!optionalRestaurant.isPresent())
+            throw new NotFoundException("Restaurante não encontrado");
+        return optionalRestaurant.get();
     }
 }
