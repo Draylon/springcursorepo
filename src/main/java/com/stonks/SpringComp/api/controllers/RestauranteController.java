@@ -23,8 +23,9 @@ public class RestauranteController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 
-    public void create(@RequestBody @Valid CreateRestaurantDTO createRestaurantdto){
+    public String create(@RequestBody @Valid CreateRestaurantDTO createRestaurantdto){
         restaurantService.createRestaurant(createRestaurantdto);
+        return "Restaurante Criado!";
     }
 
     @ResponseStatus(HttpStatus.OK)

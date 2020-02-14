@@ -19,6 +19,8 @@ public class RestaurantResponseDTO {
     @ApiModelProperty(value = "${restaurant.create.phone}")
     private String phone;
 
+
+
     public Integer getId() {
         return id;
     }

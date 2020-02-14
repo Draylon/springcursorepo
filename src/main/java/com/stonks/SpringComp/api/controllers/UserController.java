@@ -25,8 +25,9 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 
-    public void create(@ApiParam(value = "Contem info do user") @RequestBody @Valid CreateUserDTO createUserDTO){
+    public String create(@ApiParam(value = "Contem info do user") @RequestBody @Valid CreateUserDTO createUserDTO){
         userService.create(createUserDTO);
+        return "Usuário Criado!";
     }
 
     @ResponseStatus(HttpStatus.OK)

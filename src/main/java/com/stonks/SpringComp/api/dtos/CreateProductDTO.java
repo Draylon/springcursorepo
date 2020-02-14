@@ -17,11 +17,11 @@ public class CreateProductDTO {
 
     @NotNull
     @Min(value = 1,message = "Valor mínimo é de 1")
-    @ApiModelProperty(value = "${product.create.value")
+    @ApiModelProperty(value = "${product.create.value}")
     private Double value;
 
     @NotNull
-    @ApiModelProperty(value = "${product.create.restaurantId")
+    @ApiModelProperty(value = "${product.create.restaurantId}")
     private Integer restaurantId;
 
 

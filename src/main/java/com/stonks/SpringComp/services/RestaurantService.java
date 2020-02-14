@@ -32,7 +32,7 @@ public class RestaurantService {
         return new RestaurantResponseDTO()
                     .setEmail(restaurant.getEmail())
                     .setName(restaurant.getName())
-                    .setPhone(restaurant.getTelefone());
+                    .setPhone(restaurant.getPhone());
     }
 
     public Restaurant findById(Integer id){

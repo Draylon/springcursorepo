@@ -19,6 +19,7 @@ public class ProductResponseDTO {
     private RestaurantResponseDTO restaurant;
 
 
+
     public String getName() {
         return name;
     }

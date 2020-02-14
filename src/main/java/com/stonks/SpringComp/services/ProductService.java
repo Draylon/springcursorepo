@@ -12,7 +12,9 @@ import com.stonks.SpringComp.repositories.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -32,6 +34,7 @@ public class ProductService {
                 .setRestaurant(restaurant)
                 .setValue(createProductDTO.getValue());
 
+        System.out.println(product.toString());
         productRepo.save(product);
 
         RestaurantResponseDTO restaurantResponseDTO = RestaurantMapper.toResponseDTO(restaurant);
@@ -53,4 +56,11 @@ public class ProductService {
         return optionalProduct.get();
     }
 
+    public List<ProductResponseDTO> getAll(){
+        List<Product> list = productRepo.findAll();
+        // return list.stream().map(ProductMapper::toResponseDTO).collect(Collectors.toList());
+        List<ProductResponseDTO> response = null;
+        for (Product item:list) response.add(ProductMapper.toResponseDTO(item));
+        return response;
+    }
 }

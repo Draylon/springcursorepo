@@ -13,9 +13,10 @@ public class Restaurant {
     @Column(name = "CNPJ", nullable = false)
     private String cnpj;
     @Column(name = "TELEFONE",nullable = false)
-    private String telefone;
+    private String phone;
     @Column(name = "EMAIL",nullable = false)
     private String email;
+
 
     public Integer getId() {
         return id;
@@ -44,12 +45,12 @@ public class Restaurant {
         return this;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public Restaurant setTelefone(String telefone) {
-        this.telefone = telefone;
+    public Restaurant setPhone(String phone) {
+        this.phone = phone;
         return this;
     }
 
