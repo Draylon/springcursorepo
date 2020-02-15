@@ -53,12 +53,10 @@ public class UserService {
         return UserMapper.toResponseDTO(user.get());
     }
 
-    public UserResponseDTO getById(Integer id){
+    public User getById(Integer id){
         Optional<User> optional = userRepo.findById(id);
-        if(optional.isPresent()) {
-            User user = optional.get();
-            return UserMapper.toResponseDTO(user);
-        }
+        if(optional.isPresent())
+            return optional.get();
         return null;
     }
 

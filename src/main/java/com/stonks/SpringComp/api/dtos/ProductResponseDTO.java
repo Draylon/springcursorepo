@@ -8,6 +8,9 @@ import javax.validation.constraints.Min;
 @ApiModel("ProductResponseDTO")
 public class ProductResponseDTO {
 
+    @ApiModelProperty(value = "")
+    private Integer productId;
+
     @ApiModelProperty(value = "${product.response.name}")
     private String name;
 
@@ -18,7 +21,14 @@ public class ProductResponseDTO {
     @ApiModelProperty(value = "${product.response.restaurant")
     private RestaurantResponseDTO restaurant;
 
+    public Integer getProductId() {
+        return productId;
+    }
 
+    public ProductResponseDTO setProductId(Integer productId) {
+        this.productId = productId;
+        return this;
+    }
 
     public String getName() {
         return name;
