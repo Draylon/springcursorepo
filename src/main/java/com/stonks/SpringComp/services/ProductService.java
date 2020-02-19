@@ -58,9 +58,9 @@ public class ProductService {
 
     public List<ProductResponseDTO> getAll(){
         List<Product> list = productRepo.findAll();
-        // return list.stream().map(ProductMapper::toResponseDTO).collect(Collectors.toList());
-        List<ProductResponseDTO> response = null;
-        for (Product item:list) response.add(ProductMapper.toResponseDTO(item));
-        return response;
+        return list.stream().map(ProductMapper::toResponseDTO).collect(Collectors.toList());
+//        List<ProductResponseDTO> response = null;
+//        for (Product item:list) response.add(ProductMapper.toResponseDTO(item));
+//        return response;
     }
 }

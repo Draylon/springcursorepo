@@ -20,7 +20,6 @@ public class Order {
     @Column(name = "STATUS",nullable = false)
     private OrderStatusEnum status;
 
-
     @ManyToOne
     @JoinColumn(name = "RESTAURANT_ID",nullable = false)
     private Restaurant restaurant;

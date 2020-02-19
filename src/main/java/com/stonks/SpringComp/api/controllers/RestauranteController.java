@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController("RestauranteControllerV1")
 @RequestMapping(RestPath.BASE_PATH + "/restaurante")
@@ -29,8 +30,14 @@ public class RestauranteController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "Get restaurant")
+    @GetMapping(value = "/GetRestaurant")
     public RestaurantResponseDTO get(@RequestParam @Param("id") Integer id){
         return restaurantService.getById(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/GetRestaurantList")
+    public List<RestaurantResponseDTO> getList(){
+        return restaurantService.getAll();
     }
 }

@@ -2,7 +2,6 @@ package com.stonks.SpringComp.api.controllers;
 
 import com.stonks.SpringComp.api.dtos.CreateProductDTO;
 import com.stonks.SpringComp.api.dtos.ProductResponseDTO;
-import com.stonks.SpringComp.api.mappers.ProductMapper;
 import com.stonks.SpringComp.services.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
@@ -27,7 +26,8 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponses({
-            @ApiResponse(code = 201,message = "Produto Criado",response = ProductResponseDTO.class)
+            @ApiResponse(code = 201,message = "Produto Criado",response = ProductResponseDTO.class),
+            @ApiResponse(code = 500, message = "Erro ao Processar Pedido!", response = String.class)
     })
 
     public String create(@RequestBody @Valid CreateProductDTO createProductDTO){
@@ -36,13 +36,13 @@ public class ProductController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping( value = "Get Product")
-    public ProductResponseDTO get(@RequestParam @Param(value = "id") Integer id){
+    @GetMapping( value = "/GetProduct")
+    public ProductResponseDTO get(@RequestParam @Param("id") Integer id){
         return productService.getById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "Get All Products")
+    @GetMapping(value = "/GetProductList")
     public List<ProductResponseDTO> getList(){
         return productService.getAll();
     }

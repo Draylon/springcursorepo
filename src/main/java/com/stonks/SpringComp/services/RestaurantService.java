@@ -9,7 +9,9 @@ import com.stonks.SpringComp.repositories.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
@@ -26,13 +28,8 @@ public class RestaurantService {
     }
 
     public RestaurantResponseDTO getById(Integer id){
-
         Restaurant restaurant = findById(id);
-
-        return new RestaurantResponseDTO()
-                    .setEmail(restaurant.getEmail())
-                    .setName(restaurant.getName())
-                    .setPhone(restaurant.getPhone());
+        return RestaurantMapper.toResponseDTO(restaurant);
     }
 
     public Restaurant findById(Integer id){
@@ -40,5 +37,9 @@ public class RestaurantService {
         if(!optionalRestaurant.isPresent())
             throw new NotFoundException("Restaurante não encontrado");
         return optionalRestaurant.get();
+    }
+
+    public List<RestaurantResponseDTO> getAll(){
+        return restaurantRepo.findAll().stream().map(RestaurantMapper::toResponseDTO).collect(Collectors.toList());
     }
 }

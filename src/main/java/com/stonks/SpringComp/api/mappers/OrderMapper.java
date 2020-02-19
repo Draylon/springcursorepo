@@ -1,10 +1,8 @@
 package com.stonks.SpringComp.api.mappers;
 
 import com.stonks.SpringComp.api.dtos.CreateOrderDTO;
-import com.stonks.SpringComp.api.dtos.OrderItemDto;
 import com.stonks.SpringComp.api.dtos.OrderResponseDTO;
 import com.stonks.SpringComp.entities.Order;
-import com.stonks.SpringComp.entities.OrderItem;
 import org.modelmapper.ModelMapper;
 
 public class OrderMapper {

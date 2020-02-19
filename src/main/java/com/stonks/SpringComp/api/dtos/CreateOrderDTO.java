@@ -1,6 +1,5 @@
 package com.stonks.SpringComp.api.dtos;
 
-import com.stonks.SpringComp.entities.OrderItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -17,10 +16,10 @@ public class CreateOrderDTO {
 
     @NotEmpty
     @ApiModelProperty(value = "${order.create.itemlist}")
-    private List<OrderItemDto> itemList;
+    private List<CreateOrderItemDTO> itemList;
 
     @NotNull
-    @ApiModelProperty(value = "${restaurant.create.id}")
+    @ApiModelProperty(value = "${restaurant.response.id}")
     private Integer restaurantId;
 
 
@@ -33,11 +32,11 @@ public class CreateOrderDTO {
         return this;
     }
 
-    public List<OrderItemDto> getItemList() {
+    public List<CreateOrderItemDTO> getItemList() {
         return itemList;
     }
 
-    public CreateOrderDTO setItemList(List<OrderItemDto> itemList) {
+    public CreateOrderDTO setItemList(List<CreateOrderItemDTO> itemList) {
         this.itemList = itemList;
         return this;
     }

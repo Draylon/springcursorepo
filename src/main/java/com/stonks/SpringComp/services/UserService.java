@@ -46,18 +46,16 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public UserResponseDTO findById(Integer id){
-        Optional<User> user = userRepo.findById(id);
-        if(!user.isPresent())
-            throw new NotFoundException("Não existe usuário para o id: "+ id);
-        return UserMapper.toResponseDTO(user.get());
+    public UserResponseDTO getById(Integer id){
+        User user = findById(id);
+        return UserMapper.toResponseDTO(user);
     }
 
-    public User getById(Integer id){
-        Optional<User> optional = userRepo.findById(id);
-        if(optional.isPresent())
-            return optional.get();
-        return null;
+    public User findById(Integer id){
+        Optional<User> userOptional = userRepo.findById(id);
+        if (!userOptional.isPresent())
+            throw new NotFoundException("Usuário do id: "+id+" não encontrado!");
+        return userOptional.get();
     }
 
     public List<UserResponseDTO> listAll(){

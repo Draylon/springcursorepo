@@ -31,14 +31,14 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping( value = "/get")
+    @GetMapping( value = "/GetUser")
     public UserResponseDTO get(@RequestParam @Param("id") Integer id){
         return userService.getById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/list")
-    public List<UserResponseDTO> list(){
+    @GetMapping(value = "/GetUserList")
+    public List<UserResponseDTO> getList(){
         return userService.listAll();
     }
 }

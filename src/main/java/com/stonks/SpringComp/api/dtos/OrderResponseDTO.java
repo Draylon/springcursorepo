@@ -4,40 +4,44 @@ import com.stonks.SpringComp.enums.OrderStatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
 @ApiModel("OrderResponseDTO")
 public class OrderResponseDTO {
 
-    @ApiModelProperty(value = "")
+    @NotNull
+    @ApiModelProperty(value = "${order.response.id}")
     private Integer orderId;
 
-    @ApiModelProperty(value = "")
+    @NotNull
+    @ApiModelProperty(value = "${order.response.totalValue}")
     private Double totalValue;
 
-    @ApiModelProperty(value = "")
-    private OrderStatusEnum orderStatusEnum;
+    @NotNull
+    @ApiModelProperty(value = "${order.response.orderStatus}")
+    private OrderStatusEnum orderStatus;
 
-    @ApiModelProperty(value = "")
+    @NotNull
+    @ApiModelProperty(value = "${order.response.userResponse}")
     private UserResponseDTO userResponse;
 
-    @ApiModelProperty(value = "")
+    @NotNull
+    @ApiModelProperty(value = "${order.response.restaurantResponse}")
     private RestaurantResponseDTO restaurantResponse;
 
-    @ApiModelProperty(value = "")
-    private List<OrderItemDto> items;
+    @NotNull
+    @ApiModelProperty(value = "${order.response.itemsList}")
+    private List<OrderItemDTO> items;
 
 
-    public Integer getId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public OrderResponseDTO setId(Integer id) {
-        this.orderId = id;
+    public OrderResponseDTO setOrderId(Integer orderId) {
+        this.orderId = orderId;
         return this;
     }
 
@@ -50,12 +54,12 @@ public class OrderResponseDTO {
         return this;
     }
 
-    public OrderStatusEnum getOrderStatusEnum() {
-        return orderStatusEnum;
+    public OrderStatusEnum getOrderStatus() {
+        return orderStatus;
     }
 
-    public OrderResponseDTO setOrderStatusEnum(OrderStatusEnum orderStatusEnum) {
-        this.orderStatusEnum = orderStatusEnum;
+    public OrderResponseDTO setOrderStatus(OrderStatusEnum orderStatus) {
+        this.orderStatus = orderStatus;
         return this;
     }
 
@@ -77,11 +81,11 @@ public class OrderResponseDTO {
         return this;
     }
 
-    public List<OrderItemDto> getItems() {
+    public List<OrderItemDTO> getItems() {
         return items;
     }
 
-    public OrderResponseDTO setItems(List<OrderItemDto> items) {
+    public OrderResponseDTO setItems(List<OrderItemDTO> items) {
         this.items = items;
         return this;
     }

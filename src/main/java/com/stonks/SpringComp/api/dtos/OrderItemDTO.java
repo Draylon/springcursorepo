@@ -7,27 +7,23 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @ApiModel("OrderItemDTO")
-public class OrderItemDto {
+public class OrderItemDTO {
 
-    @NotNull
-    @ApiModelProperty(value = "${orderItem.create.pid}")
-    private Integer orderItemId;
+    @ApiModelProperty(value = "${orderItem.response.id}")
+    private Integer id;
 
-    @Min( value = 1,message = "Quantidade mínima é 1")
-    @ApiModelProperty(value = "${orderItem.create.quantity}")
+    @ApiModelProperty(value = "${orderItem.response.quantity}")
     private Integer quantity;
 
-    @NotNull
-    @ApiModelProperty(value = "${orderItem.create.productResponse}")
+    @ApiModelProperty(value = "${orderItem.response.productResponse}")
     private ProductResponseDTO productResponse;
 
-
-    public Integer getOrderItemId() {
-        return orderItemId;
+    public Integer getId() {
+        return id;
     }
 
-    public OrderItemDto setOrderItemId(Integer orderItemId) {
-        this.orderItemId = orderItemId;
+    public OrderItemDTO setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -35,7 +31,7 @@ public class OrderItemDto {
         return quantity;
     }
 
-    public OrderItemDto setQuantity(Integer quantity) {
+    public OrderItemDTO setQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -44,7 +40,7 @@ public class OrderItemDto {
         return productResponse;
     }
 
-    public OrderItemDto setProductResponse(ProductResponseDTO productResponse) {
+    public OrderItemDTO setProductResponse(ProductResponseDTO productResponse) {
         this.productResponse = productResponse;
         return this;
     }
