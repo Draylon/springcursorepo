@@ -87,4 +87,16 @@ public class Order {
         this.items = items;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", totalValue=" + totalValue +
+                ", status=" + status +
+                ", restaurant=" + restaurant +
+                ", user=" + user +
+                ", items=" + items +
+                '}';
+    }
 }

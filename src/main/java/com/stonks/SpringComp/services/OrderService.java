@@ -1,9 +1,6 @@
 package com.stonks.SpringComp.services;
 
-import com.stonks.SpringComp.api.dtos.CreateOrderDTO;
-import com.stonks.SpringComp.api.dtos.CreateOrderItemDTO;
-import com.stonks.SpringComp.api.dtos.OrderItemDTO;
-import com.stonks.SpringComp.api.dtos.OrderResponseDTO;
+import com.stonks.SpringComp.api.dtos.*;
 import com.stonks.SpringComp.api.mappers.OrderItemMapper;
 import com.stonks.SpringComp.api.mappers.OrderMapper;
 import com.stonks.SpringComp.entities.Order;
@@ -103,4 +100,30 @@ public class OrderService {
 //        for (Order item:list) response.add(OrderMapper.toResponseDTO(item));
 //        return response;
     }
+
+    public void updateOrder(UpdateOrderDTO updateOrderDTO) {
+        Order order = findById(updateOrderDTO.getId());
+
+        if(updateOrderDTO.getTotalValue() != null)
+            order.setTotalValue(updateOrderDTO.getTotalValue());
+        if(updateOrderDTO.getRestaurantId() != null)
+            order.setRestaurant(restaurantService.findById(updateOrderDTO.getRestaurantId()));
+        if(updateOrderDTO.getOrderStatusEnum() != null)
+            order.setStatus(updateOrderDTO.getOrderStatusEnum());
+        if(updateOrderDTO.getUserId() != null)
+            order.setUser(userService.findById(updateOrderDTO.getUserId()));
+//        if(updateOrderDTO.getItems() != null)
+//            order.setItems(orderItemService.createOrderItemList(updateOrderDTO.getItems(),order));
+            //order.setItems(updateOrderDTO.getItems().stream().map(OrderItemMapper::toEntity).collect(Collectors.toList()));
+            //Provavelmente não vai mapear pra orderItem certo
+        System.out.println(order.toString());
+        orderRepo.save(order);
+    }
+
+    public void updateOrderStatus(Integer id, OrderStatusEnum orderStatusEnum) {
+        //UpdateOrderDTO p = new UpdateOrderDTO().setId(id).setOrderStatusEnum(OrderStatusEnum.getEnum(orderStatusEnum));
+        //System.out.println(orderStatusEnum + "   "+p.getOrderStatusEnum() + "   " + p.getId());
+        updateOrder(new UpdateOrderDTO().setId(id).setOrderStatusEnum(orderStatusEnum));
+    }
+
 }

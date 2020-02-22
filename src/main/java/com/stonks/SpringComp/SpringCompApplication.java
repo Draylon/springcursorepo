@@ -12,3 +12,11 @@ public class SpringCompApplication {
 	}
 
 }
+
+/*
+SELECT * FROM PRODUTO;
+SELECT * FROM RESTAURANTE;
+SELECT * FROM ORDER_ITEM;
+SELECT * FROM PEDIDO;
+SELECT * FROM USUARIO
+ */

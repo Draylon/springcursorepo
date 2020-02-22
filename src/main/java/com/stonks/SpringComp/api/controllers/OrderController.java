@@ -2,11 +2,10 @@ package com.stonks.SpringComp.api.controllers;
 
 import com.stonks.SpringComp.api.dtos.CreateOrderDTO;
 import com.stonks.SpringComp.api.dtos.OrderResponseDTO;
+import com.stonks.SpringComp.api.dtos.UpdateOrderDTO;
+import com.stonks.SpringComp.enums.OrderStatusEnum;
 import com.stonks.SpringComp.services.OrderService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -48,14 +47,17 @@ public class OrderController {
         return orderService.getAll();
     }
 
-    /*private void stonks(){
-        String lmao = "POST\n" + "/api/v1/pedido\n" + "create\n" +
-                "GET\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "HEAD\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "POST\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "PUT\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "DELETE\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "OPTIONS\n" + "/api/v1/pedido/Get\n" + "get\n" +
-                "PATCH\n" + "/api/v1/pedido/Get\n" + "get";
-    }*/
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = {"/UpdateOrderStatus/{id}/{orderStatus}"})
+    public String updateOrderStatus(@PathVariable @Param("id") Integer id, @ApiParam(allowableValues = "OPEN,CONFIRMED,IN_TRANSIT,COMPLETE,EXPIRED,CANCELED,ERROR") @PathVariable @Param("orderStatus") OrderStatusEnum orderStatus){
+        orderService.updateOrderStatus(id,orderStatus);
+        return "Order Status Updated";
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = "/UpdateOrder",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String updateOrder(@RequestBody @Valid UpdateOrderDTO updateOrderDTO){
+        orderService.updateOrder(updateOrderDTO);
+        return "Order Updated!";
+    }
 }

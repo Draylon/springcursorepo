@@ -21,6 +21,9 @@ public class ProductResponseDTO {
     @ApiModelProperty(value = "${product.response.restaurant")
     private RestaurantResponseDTO restaurant;
 
+    @ApiModelProperty(value = "${product.response.isvalid}")
+    private Boolean isValid;
+
     public Integer getProductId() {
         return productId;
     }
@@ -56,4 +59,14 @@ public class ProductResponseDTO {
         this.restaurant = restaurant;
         return this;
     }
+
+    public Boolean getValid() {
+        return isValid;
+    }
+
+    public ProductResponseDTO setValid(Boolean valid) {
+        isValid = valid;
+        return this;
+    }
 }
+

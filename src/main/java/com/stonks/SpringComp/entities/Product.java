@@ -21,6 +21,9 @@ public class Product {
     @JoinColumn(name = "RESTAURANTE",nullable = false)
     private Restaurant restaurant;
 
+    @Column(name = "ISVALID",nullable = false)
+    private Boolean isValid;
+
 
     public Integer getId() {
         return id;
@@ -58,6 +61,15 @@ public class Product {
         return this;
     }
 
+    public Boolean getValid() {
+        return isValid;
+    }
+
+    public Product setValid(Boolean valid) {
+        isValid = valid;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -65,6 +77,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", value=" + value +
                 ", restaurant=" + restaurant +
+                ", isValid=" + isValid +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package com.stonks.SpringComp.api.controllers;
 
 import com.stonks.SpringComp.api.dtos.CreateProductDTO;
 import com.stonks.SpringComp.api.dtos.ProductResponseDTO;
+import com.stonks.SpringComp.api.dtos.UpdateProductDTO;
 import com.stonks.SpringComp.services.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
@@ -36,6 +37,13 @@ public class ProductController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = "/InvalidateProduct/{id}")
+    public String invalidateProduct(@PathVariable(required = true) @Param("id") Integer id){
+        productService.invalidateProduct(id);
+        return "Product is now not avaliable";
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping( value = "/GetProduct")
     public ProductResponseDTO get(@RequestParam @Param("id") Integer id){
         return productService.getById(id);
@@ -45,5 +53,19 @@ public class ProductController {
     @GetMapping(value = "/GetProductList")
     public List<ProductResponseDTO> getList(){
         return productService.getAll();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping({"/DeleteItem/{id}"})
+    public String delete(@PathVariable @Param("id") @Valid Integer id){
+        productService.deleteById(id);
+        return "Product "+id+" deleted!";
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = "/UpdateProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String updateProduct(@RequestBody @Valid UpdateProductDTO updateProductDTO){
+        productService.updateProduct(updateProductDTO);
+        return "Updated product "+updateProductDTO.getId();
     }
 }

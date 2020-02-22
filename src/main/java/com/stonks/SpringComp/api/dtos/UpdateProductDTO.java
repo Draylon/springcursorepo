@@ -1,39 +1,43 @@
 package com.stonks.SpringComp.api.dtos;
 
-import com.stonks.SpringComp.entities.Restaurant;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@ApiModel("CreateProductDTO")
-public class CreateProductDTO {
+public class UpdateProductDTO {
 
-    @NotEmpty
+    @ApiModelProperty(value = "${product.update.id}")
+    private Integer id;
+
     @ApiModelProperty(value = "${product.create.name}")
     private String name;
 
-    @NotNull
     @Min(value = 1,message = "Valor mínimo é de 1")
     @ApiModelProperty(value = "${product.create.value}")
     private Double value;
 
-    @NotNull
     @ApiModelProperty(value = "${product.create.restaurantId}")
     private Integer restaurantId;
 
-    @NotNull
-    @ApiModelProperty(value = "${product.create.isvalid}")
+    @ApiModelProperty(value = "${product.update.isvalid}")
     private Boolean isValid;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public UpdateProductDTO setId(Integer id) {
+        this.id = id;
+        return this;
+    }
 
     public String getName() {
         return name;
     }
 
-    public CreateProductDTO setName(String name) {
+    public UpdateProductDTO setName(String name) {
         this.name = name;
         return this;
     }
@@ -42,7 +46,7 @@ public class CreateProductDTO {
         return value;
     }
 
-    public CreateProductDTO setValue(Double value) {
+    public UpdateProductDTO setValue(Double value) {
         this.value = value;
         return this;
     }
@@ -51,7 +55,7 @@ public class CreateProductDTO {
         return restaurantId;
     }
 
-    public CreateProductDTO setRestaurantId(Integer restaurantId) {
+    public UpdateProductDTO setRestaurantId(Integer restaurantId) {
         this.restaurantId = restaurantId;
         return this;
     }
@@ -60,7 +64,7 @@ public class CreateProductDTO {
         return isValid;
     }
 
-    public CreateProductDTO setValid(Boolean valid) {
+    public UpdateProductDTO setValid(Boolean valid) {
         isValid = valid;
         return this;
     }
