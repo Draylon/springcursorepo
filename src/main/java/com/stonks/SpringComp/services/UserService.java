@@ -1,6 +1,8 @@
 package com.stonks.SpringComp.services;
 
 import com.stonks.SpringComp.api.dtos.CreateUserDTO;
+import com.stonks.SpringComp.api.dtos.UserLoginDTO;
+import com.stonks.SpringComp.api.dtos.UserLoginResponseDTO;
 import com.stonks.SpringComp.api.dtos.UserResponseDTO;
 import com.stonks.SpringComp.api.mappers.UserMapper;
 import com.stonks.SpringComp.entities.User;
@@ -10,6 +12,8 @@ import com.stonks.SpringComp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,13 +26,13 @@ public class UserService {
     public UserResponseDTO create(CreateUserDTO createUserDTO){
         validateUserEmail(createUserDTO.getEmail());
         saveUser(UserMapper.toEntity(createUserDTO));
-        User user = userRepo.findByEmail(createUserDTO.getEmail());
+        User user = userRepo.getByEmail(createUserDTO.getEmail());
         UserResponseDTO response = UserMapper.toResponseDTO(user);
         return response;
     }
 
     private void validateUserEmail(String email){
-        User user = userRepo.findByEmail(email);
+        User user = userRepo.getByEmail(email);
         if(user != null) {
             throw new AlreadyExistsException("Usuário já cadastrado!");
         }
@@ -63,4 +67,25 @@ public class UserService {
         return users.stream().map(UserMapper::toResponseDTO).collect(Collectors.toList());
     }
 
+    public User findByEmail(String email) {
+        Optional<User> userOptional = userRepo.findByEmail(email);
+        if (!userOptional.isPresent())
+            throw new NotFoundException("Email "+email+" não encontrado");
+        return userOptional.get();
+    }
+    public UserResponseDTO getByEmail(String email){
+        User user = findByEmail(email);
+        return getById(user.getId());
+    }
+
+    public UserLoginResponseDTO getLogin(String email, String password) {
+        User u = findByEmail(email);
+        System.out.println(u.toString());
+        System.out.println(u.getPword() + " || "+password);
+        if (u.getPword().contentEquals(password)) {
+            String enc = email+password;
+            String hash = Base64.getEncoder().encodeToString(enc.getBytes());
+            return new UserLoginResponseDTO().setValidCredentials(true).setHash(hash);
+        }else return new UserLoginResponseDTO().setValidCredentials(false).setHash("");
+    }
 }

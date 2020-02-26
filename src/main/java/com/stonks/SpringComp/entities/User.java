@@ -1,5 +1,7 @@
 package com.stonks.SpringComp.entities;
 
+import com.stonks.SpringComp.enums.UserTypeEnum;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,8 @@ public class User {
     private String pword;
     @Column(name = "ENDERECO",nullable = false)
     private String address;
+    @Column(name = "TIPO_USUARIO",nullable = false)
+    private UserTypeEnum userType;
 
     public Integer getId() {
         return id;
@@ -71,5 +75,27 @@ public class User {
     public User setAddress(String address) {
         this.address = address;
         return this;
+    }
+
+    public UserTypeEnum getUserType() {
+        return userType;
+    }
+
+    public User setUserType(UserTypeEnum userType) {
+        this.userType = userType;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", pword='" + pword + '\'' +
+                ", address='" + address + '\'' +
+                ", userType=" + userType +
+                '}';
     }
 }

@@ -1,8 +1,10 @@
 package com.stonks.SpringComp.api.dtos;
 
+import com.stonks.SpringComp.enums.UserTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CreateUserDTO {
     @NotEmpty
@@ -24,6 +26,10 @@ public class CreateUserDTO {
     @NotEmpty
     @ApiModelProperty(value = "${user.create.address}")
     private String address;
+
+    @NotNull
+    @ApiModelProperty(value = "${user.create.userType}")
+    private UserTypeEnum userType;
 
     public String getName() {
         return name;
@@ -67,6 +73,15 @@ public class CreateUserDTO {
 
     public CreateUserDTO setAddress(String address) {
         this.address = address;
+        return this;
+    }
+
+    public UserTypeEnum getUserType() {
+        return userType;
+    }
+
+    public CreateUserDTO setUserType(UserTypeEnum userType) {
+        this.userType = userType;
         return this;
     }
 }

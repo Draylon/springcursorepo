@@ -24,7 +24,6 @@ public enum OrderStatusEnum {
         for (OrderStatusEnum orderStatusEnum : OrderStatusEnum.values()) {
             enumList.put(orderStatusEnum.selectedEnum,orderStatusEnum);
             stringList.put(orderStatusEnum.toString(),orderStatusEnum);
-
         }
     }
 

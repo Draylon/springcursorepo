@@ -40,4 +40,11 @@ public class RestauranteController {
     public List<RestaurantResponseDTO> getList(){
         return restaurantService.getAll();
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/GetProductListAlike")
+    public List<RestaurantResponseDTO> getAlike(@RequestParam @Param("name") String name){
+        return restaurantService.queryAlike(name);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.stonks.SpringComp.api.controllers;
 
 import com.stonks.SpringComp.api.dtos.CreateUserDTO;
+import com.stonks.SpringComp.api.dtos.UserLoginDTO;
+import com.stonks.SpringComp.api.dtos.UserLoginResponseDTO;
 import com.stonks.SpringComp.api.dtos.UserResponseDTO;
 import com.stonks.SpringComp.services.UserService;
 import io.swagger.annotations.Api;
@@ -40,5 +42,17 @@ public class UserController {
     @GetMapping(value = "/GetUserList")
     public List<UserResponseDTO> getList(){
         return userService.listAll();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping( value = "/GetUserByEmail")
+    public UserResponseDTO get(@RequestParam @Param("email") String email){
+        return userService.getByEmail(email);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping( value = "/GetLogin")
+    public UserLoginResponseDTO get(@RequestParam @Param("email") String email, @RequestParam @Param("password") String password){
+        return userService.getLogin(email,password);
     }
 }

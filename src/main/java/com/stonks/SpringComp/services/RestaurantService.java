@@ -42,4 +42,13 @@ public class RestaurantService {
     public List<RestaurantResponseDTO> getAll(){
         return restaurantRepo.findAll().stream().map(RestaurantMapper::toResponseDTO).collect(Collectors.toList());
     }
+
+    public List<RestaurantResponseDTO> queryAlike(String name) {
+        List alikeRestaurants = restaurantRepo.findAll().stream().map(restaurant -> {
+            if(restaurant.getName().toLowerCase().matches(name))
+                return getById(restaurant.getId());;
+            return null;
+        }).collect(Collectors.toList());
+        return alikeRestaurants;
+    }
 }
